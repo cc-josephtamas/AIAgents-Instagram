@@ -13,11 +13,13 @@ struct TimeLineContainerView: View {
         NavigationView {
             ScrollView(.vertical, showsIndicators: false) {
                 ScrollView(.horizontal, showsIndicators: false) {
-                    HStack {
+                    HStack(spacing: 8) {
                         ForEach(MockData().stories) {
-                            StoryView(story: $0)
+                            StoryUIViewRepresentable(story: $0)
+                                .frame(width: 80, height: 100)
                         }
                     }
+                    .padding(.horizontal, 8)
                 }
                 ForEach(MockData().posts) {
                     PostView(post: $0, screenWidth: UIScreen.main.bounds.size.width)
